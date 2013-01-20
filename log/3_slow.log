@@ -1,0 +1,789 @@
+/usr/local/Cellar/mysql/5.5.29/bin/mysqld, Version: 5.5.29 (Source distribution). started with:
+Tcp port: 3306  Unix socket: /tmp/mysql.sock
+Time                 Id Command    Argument
+# User@Host: root[root] @ localhost []
+# Query_time: 0.459668  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+use test;
+SET timestamp=1358682727;
+SET GLOBAL slow_query_log_file = '/Users/michinobu/github/mysql_perf/log/3_slow.log';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000056  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682727;
+SET GLOBAL slow_query_log = 1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000757  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682727;
+SET GLOBAL long_query_time = 0;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.025021  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682727;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.169032  Lock_time: 0.056226 Rows_sent: 1  Rows_examined: 1
+SET timestamp=1358682727;
+SELECT c1 FROM t1 WHERE pk = 555;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000049  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682727;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000232  Lock_time: 0.000152 Rows_sent: 1  Rows_examined: 1
+SET timestamp=1358682727;
+SELECT pk FROM t1 WHERE pk = 555;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000022  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682727;
+FLUSH TABLES;
+# Time: 130120 20:52:48
+# User@Host: root[root] @ localhost []
+# Query_time: 40.726989  Lock_time: 0.000077 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682768;
+SELECT c1 FROM t1 WHERE c1 = 555;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000084  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682768;
+FLUSH TABLES;
+# Time: 130120 20:52:51
+# User@Host: root[root] @ localhost []
+# Query_time: 2.822190  Lock_time: 0.021245 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682771;
+SELECT COUNT(*) FROM t1 WHERE c2 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000076  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682771;
+FLUSH TABLES;
+# Time: 130120 20:52:52
+# User@Host: root[root] @ localhost []
+# Query_time: 1.175355  Lock_time: 0.046538 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682772;
+SELECT COUNT(*) FROM t2 WHERE c2 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682772;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.099853  Lock_time: 0.000146 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682772;
+SELECT COUNT(c2) FROM t1 WHERE c2 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682772;
+FLUSH TABLES;
+# Time: 130120 20:53:06
+# User@Host: root[root] @ localhost []
+# Query_time: 13.562057  Lock_time: 0.000145 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682786;
+SELECT COUNT(c3) FROM t1 WHERE c2 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000074  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682786;
+FLUSH TABLES;
+# Time: 130120 20:53:14
+# User@Host: root[root] @ localhost []
+# Query_time: 8.379612  Lock_time: 0.028846 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682794;
+SELECT COUNT(*) FROM t1 WHERE c3 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000050  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682794;
+FLUSH TABLES;
+# Time: 130120 20:53:19
+# User@Host: root[root] @ localhost []
+# Query_time: 4.793032  Lock_time: 0.053051 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682799;
+SELECT COUNT(*) FROM t2 WHERE c3 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000114  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682799;
+FLUSH TABLES;
+# Time: 130120 20:53:20
+# User@Host: root[root] @ localhost []
+# Query_time: 0.805067  Lock_time: 0.025829 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682800;
+SELECT COUNT(*) FROM t1 WHERE c4 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000058  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682800;
+FLUSH TABLES;
+# Time: 130120 20:53:21
+# User@Host: root[root] @ localhost []
+# Query_time: 0.835371  Lock_time: 0.000167 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682801;
+SELECT COUNT(*) FROM t2 WHERE c4 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000046  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682801;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.077289  Lock_time: 0.000159 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682801;
+SELECT COUNT(c4) FROM t1 WHERE c4 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000052  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682801;
+FLUSH TABLES;
+# Time: 130120 20:53:33
+# User@Host: root[root] @ localhost []
+# Query_time: 11.974615  Lock_time: 0.000176 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682813;
+SELECT COUNT(c5) FROM t1 WHERE c4 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682813;
+FLUSH TABLES;
+# Time: 130120 20:53:39
+# User@Host: root[root] @ localhost []
+# Query_time: 6.402512  Lock_time: 0.000163 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682819;
+SELECT COUNT(*) FROM t1 WHERE c5 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000075  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682819;
+FLUSH TABLES;
+# Time: 130120 20:53:46
+# User@Host: root[root] @ localhost []
+# Query_time: 7.369542  Lock_time: 0.000164 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682826;
+SELECT COUNT(*) FROM t2 WHERE c5 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000049  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682826;
+FLUSH TABLES;
+# Time: 130120 20:53:47
+# User@Host: root[root] @ localhost []
+# Query_time: 0.085342  Lock_time: 0.046845 Rows_sent: 1  Rows_examined: 443
+SET timestamp=1358682827;
+SELECT COUNT(*) FROM t1 WHERE 333 < pk and pk < 777;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000045  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682827;
+FLUSH TABLES;
+# Time: 130120 20:53:52
+# User@Host: root[root] @ localhost []
+# Query_time: 5.792206  Lock_time: 0.000167 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682832;
+SELECT COUNT(*) FROM t1 WHERE 333 < c1 and c1 < 777;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000083  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682832;
+FLUSH TABLES;
+# Time: 130120 20:53:57
+# User@Host: root[root] @ localhost []
+# Query_time: 5.027469  Lock_time: 0.000169 Rows_sent: 1  Rows_examined: 299968
+SET timestamp=1358682837;
+SELECT COUNT(*) FROM t1 WHERE 3 < c2 and c2 < 7;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000057  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682837;
+FLUSH TABLES;
+# Time: 130120 20:54:03
+# User@Host: root[root] @ localhost []
+# Query_time: 5.936712  Lock_time: 0.119702 Rows_sent: 1  Rows_examined: 299968
+SET timestamp=1358682843;
+SELECT COUNT(*) FROM t2 WHERE 3 < c2 and c2 < 7;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000055  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682843;
+FLUSH TABLES;
+# Time: 130120 20:54:09
+# User@Host: root[root] @ localhost []
+# Query_time: 5.965372  Lock_time: 0.000210 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682849;
+SELECT COUNT(*) FROM t1 WHERE 3 < c3 and c3 < 7;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000082  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682849;
+FLUSH TABLES;
+# Time: 130120 20:54:12
+# User@Host: root[root] @ localhost []
+# Query_time: 3.105512  Lock_time: 0.045516 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682852;
+SELECT COUNT(*) FROM t2 WHERE 3 < c3 and c3 < 7;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000049  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682852;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.058277  Lock_time: 0.000167 Rows_sent: 1  Rows_examined: 3
+SET timestamp=1358682852;
+SELECT COUNT(*) FROM t1 WHERE pk IN (333, 555, 777);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000044  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682852;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000275  Lock_time: 0.000150 Rows_sent: 1  Rows_examined: 3
+SET timestamp=1358682852;
+SELECT COUNT(*) FROM t1 WHERE pk = 333 OR pk = 555 OR pk = 777;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000031  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682852;
+FLUSH TABLES;
+# Time: 130120 20:54:13
+# User@Host: root[root] @ localhost []
+# Query_time: 0.166990  Lock_time: 0.000078 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682853;
+SELECT COUNT(*) FROM t1 WHERE c4 like '567%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000047  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682853;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.148582  Lock_time: 0.000153 Rows_sent: 1  Rows_examined: 99968
+SET timestamp=1358682853;
+SELECT COUNT(*) FROM t2 WHERE c4 like '567%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682853;
+FLUSH TABLES;
+# Time: 130120 20:54:18
+# User@Host: root[root] @ localhost []
+# Query_time: 5.714941  Lock_time: 0.000159 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682858;
+SELECT COUNT(*) FROM t1 WHERE c5 like '567%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682858;
+FLUSH TABLES;
+# Time: 130120 20:54:25
+# User@Host: root[root] @ localhost []
+# Query_time: 6.240257  Lock_time: 0.000187 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682865;
+SELECT COUNT(*) FROM t2 WHERE c5 like '567%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682865;
+FLUSH TABLES;
+# Time: 130120 20:54:31
+# User@Host: root[root] @ localhost []
+# Query_time: 6.548055  Lock_time: 0.000155 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682871;
+SELECT COUNT(*) FROM t1 WHERE c4 like '%890%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682871;
+FLUSH TABLES;
+# Time: 130120 20:54:38
+# User@Host: root[root] @ localhost []
+# Query_time: 6.442854  Lock_time: 0.000156 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682878;
+SELECT COUNT(*) FROM t1 WHERE c5 like '%890%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000081  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682878;
+FLUSH TABLES;
+# Time: 130120 20:54:43
+# User@Host: root[root] @ localhost []
+# Query_time: 5.768264  Lock_time: 0.000163 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682883;
+SELECT COUNT(*) FROM t1 WHERE c4 like '%123';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000046  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682883;
+FLUSH TABLES;
+# Time: 130120 20:54:50
+# User@Host: root[root] @ localhost []
+# Query_time: 6.303429  Lock_time: 0.000153 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682890;
+SELECT COUNT(*) FROM t1 WHERE c5 like '%123';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000092  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682890;
+FLUSH TABLES;
+# Time: 130120 20:54:52
+# User@Host: root[root] @ localhost []
+# Query_time: 2.495663  Lock_time: 0.000166 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682892;
+SELECT COUNT(*) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000058  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682892;
+FLUSH TABLES;
+# Time: 130120 20:54:53
+# User@Host: root[root] @ localhost []
+# Query_time: 0.390959  Lock_time: 0.000151 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682893;
+SELECT COUNT(pk) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000082  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682893;
+FLUSH TABLES;
+# Time: 130120 20:54:59
+# User@Host: root[root] @ localhost []
+# Query_time: 6.116947  Lock_time: 0.000167 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682899;
+SELECT COUNT(c1) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000073  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682899;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.431209  Lock_time: 0.000167 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682899;
+SELECT COUNT(c2) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000050  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682899;
+FLUSH TABLES;
+# Time: 130120 20:55:03
+# User@Host: root[root] @ localhost []
+# Query_time: 3.383081  Lock_time: 0.000152 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682903;
+SELECT COUNT(c2) FROM t2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000049  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682903;
+FLUSH TABLES;
+# Time: 130120 20:55:09
+# User@Host: root[root] @ localhost []
+# Query_time: 6.613420  Lock_time: 0.000148 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682909;
+SELECT COUNT(c3) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000076  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682909;
+FLUSH TABLES;
+# Time: 130120 20:55:13
+# User@Host: root[root] @ localhost []
+# Query_time: 4.064485  Lock_time: 0.000165 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682913;
+SELECT COUNT(c3) FROM t2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682913;
+FLUSH TABLES;
+# Time: 130120 20:55:17
+# User@Host: root[root] @ localhost []
+# Query_time: 3.688296  Lock_time: 0.000148 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682917;
+SELECT COUNT(c4) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682917;
+FLUSH TABLES;
+# Time: 130120 20:55:21
+# User@Host: root[root] @ localhost []
+# Query_time: 4.162721  Lock_time: 0.000151 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682921;
+SELECT COUNT(c4) FROM t2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000051  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682921;
+FLUSH TABLES;
+# Time: 130120 20:55:27
+# User@Host: root[root] @ localhost []
+# Query_time: 6.203687  Lock_time: 0.000149 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682927;
+SELECT COUNT(c5) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000080  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682927;
+FLUSH TABLES;
+# Time: 130120 20:55:28
+# User@Host: root[root] @ localhost []
+# Query_time: 1.067514  Lock_time: 0.000163 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682928;
+SELECT COUNT(c5) FROM t2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000050  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682928;
+FLUSH TABLES;
+# Time: 130120 20:55:34
+# User@Host: root[root] @ localhost []
+# Query_time: 6.054356  Lock_time: 0.000140 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682934;
+SELECT COUNT(c6) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000050  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682934;
+FLUSH TABLES;
+# Time: 130120 20:55:42
+# User@Host: root[root] @ localhost []
+# Query_time: 7.068580  Lock_time: 0.000158 Rows_sent: 10  Rows_examined: 1000000
+SET timestamp=1358682942;
+SELECT pk FROM t1 ORDER BY pk LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000080  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682942;
+FLUSH TABLES;
+# Time: 130120 20:55:48
+# User@Host: root[root] @ localhost []
+# Query_time: 6.530155  Lock_time: 0.000159 Rows_sent: 10  Rows_examined: 2000000
+SET timestamp=1358682948;
+SELECT pk FROM t1 ORDER BY c1 LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000050  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682948;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.427420  Lock_time: 0.000148 Rows_sent: 10  Rows_examined: 1000000
+SET timestamp=1358682948;
+SELECT pk FROM t1 ORDER BY c2 LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682948;
+FLUSH TABLES;
+# Time: 130120 20:55:55
+# User@Host: root[root] @ localhost []
+# Query_time: 6.588856  Lock_time: 0.000152 Rows_sent: 10  Rows_examined: 2000000
+SET timestamp=1358682955;
+SELECT pk FROM t1 ORDER BY c3 LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000049  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682955;
+FLUSH TABLES;
+# Time: 130120 20:56:03
+# User@Host: root[root] @ localhost []
+# Query_time: 7.701476  Lock_time: 0.000147 Rows_sent: 10  Rows_examined: 1000000
+SET timestamp=1358682963;
+SELECT pk FROM t1 ORDER BY pk DESC LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000050  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682963;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.700669  Lock_time: 0.000151 Rows_sent: 10  Rows_examined: 1000000
+SET timestamp=1358682963;
+SELECT pk FROM t1 ORDER BY c2 DESC LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000079  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682963;
+FLUSH TABLES;
+# Time: 130120 20:56:04
+# User@Host: root[root] @ localhost []
+# Query_time: 0.387229  Lock_time: 0.000150 Rows_sent: 10  Rows_examined: 1000000
+SET timestamp=1358682964;
+SELECT c2, COUNT(*) FROM t1 GROUP BY c2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000046  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682964;
+FLUSH TABLES;
+# Time: 130120 20:56:10
+# User@Host: root[root] @ localhost []
+# Query_time: 5.928128  Lock_time: 0.000154 Rows_sent: 10  Rows_examined: 1000020
+SET timestamp=1358682970;
+SELECT c3, COUNT(*) FROM t1 GROUP BY c3;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000076  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682970;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.127321  Lock_time: 0.094008 Rows_sent: 1  Rows_examined: 1
+SET timestamp=1358682970;
+SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.pk WHERE t1.pk = 5 ORDER BY t1.pk;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000054  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682970;
+FLUSH TABLES;
+# Time: 130120 20:56:38
+# User@Host: root[root] @ localhost []
+# Query_time: 28.139084  Lock_time: 0.000221 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358682998;
+SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.c1 WHERE t1.pk = 5 ORDER BY t1.pk;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000086  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682998;
+FLUSH TABLES;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.116812  Lock_time: 0.032279 Rows_sent: 9  Rows_examined: 19
+SET timestamp=1358682998;
+SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.pk WHERE t1.pk < 10 ORDER BY t1.pk;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000053  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358682998;
+FLUSH TABLES;
+# Time: 130120 20:57:09
+# User@Host: root[root] @ localhost []
+# Query_time: 30.309197  Lock_time: 0.000230 Rows_sent: 9  Rows_examined: 28
+SET timestamp=1358683029;
+SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.c1 WHERE t1.pk < 10 ORDER BY t1.pk;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000086  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358683029;
+FLUSH TABLES;
+# Time: 130120 20:58:58
+# User@Host: root[root] @ localhost []
+# Query_time: 109.030308  Lock_time: 0.351899 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358683138;
+SELECT COUNT(*) FROM t1 WHERE t1.pk IN (SELECT pk FROM t2 WHERE 33 < pk and pk < 77);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000081  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358683138;
+FLUSH TABLES;
+# Time: 130120 20:59:49
+# User@Host: root[root] @ localhost []
+# Query_time: 51.319563  Lock_time: 0.035291 Rows_sent: 1  Rows_examined: 43999097
+SET timestamp=1358683189;
+SELECT COUNT(*) FROM t1 WHERE t1.pk IN (SELECT c1 FROM t2 WHERE 33 < pk and pk < 77);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000080  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358683189;
+FLUSH TABLES;
+# Time: 130120 21:00:41
+# User@Host: root[root] @ localhost []
+# Query_time: 52.305410  Lock_time: 0.032804 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358683241;
+SELECT COUNT(*) FROM t1 WHERE t1.c1 IN (SELECT pk FROM t2 WHERE 33 < pk and pk < 77);
+# Time: 130120 21:00:42
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000088  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358683242;
+FLUSH TABLES;
+# Time: 130120 21:01:03
+# User@Host: root[root] @ localhost []
+# Query_time: 21.340231  Lock_time: 0.106898 Rows_sent: 1  Rows_examined: 1000000
+SET timestamp=1358683263;
+SELECT COUNT(*) FROM t1 WHERE t1.c1 IN (SELECT c1 FROM t2 WHERE 33 < pk and pk < 33);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000095  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358683263;
+FLUSH SLOW LOG;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000004  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0
+SET timestamp=1358683263;
+# administrator command: Quit;
+# Time: 130120 21:25:43
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000079  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+select @@version_comment limit 1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.064686  Lock_time: 0.000076 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT c1 FROM t1 WHERE pk = 555;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000162  Lock_time: 0.000059 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT pk FROM t1 WHERE pk = 555;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000063  Lock_time: 0.000022 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT c1 FROM t1 WHERE c1 = 555;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.082763  Lock_time: 0.000024 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c2 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.140540  Lock_time: 0.000074 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t2 WHERE c2 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000198  Lock_time: 0.000065 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c2) FROM t1 WHERE c2 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000097  Lock_time: 0.000027 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c3) FROM t1 WHERE c2 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000055  Lock_time: 0.000019 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c3 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000054  Lock_time: 0.000018 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t2 WHERE c3 = 5;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.128185  Lock_time: 0.000018 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c4 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.114561  Lock_time: 0.000063 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t2 WHERE c4 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000202  Lock_time: 0.000064 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c4) FROM t1 WHERE c4 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000100  Lock_time: 0.000027 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c5) FROM t1 WHERE c4 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000056  Lock_time: 0.000019 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c5 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000053  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t2 WHERE c5 = '5678901234';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.025721  Lock_time: 0.000020 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE 333 < pk and pk < 777;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000129  Lock_time: 0.000062 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE 333 < c1 and c1 < 777;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.076915  Lock_time: 0.000023 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE 3 < c2 and c2 < 7;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.090533  Lock_time: 0.000059 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t2 WHERE 3 < c2 and c2 < 7;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000119  Lock_time: 0.000061 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE 3 < c3 and c3 < 7;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000059  Lock_time: 0.000020 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t2 WHERE 3 < c3 and c3 < 7;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000073  Lock_time: 0.000021 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE pk IN (333, 555, 777);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000072  Lock_time: 0.000021 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE pk = 333 OR pk = 555 OR pk = 777;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000114  Lock_time: 0.000021 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c4 like '567%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000119  Lock_time: 0.000023 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t2 WHERE c4 like '567%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000063  Lock_time: 0.000025 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c5 like '567%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000059  Lock_time: 0.000022 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t2 WHERE c5 like '567%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000083  Lock_time: 0.000035 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c4 like '%890%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000148  Lock_time: 0.000031 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c5 like '%890%';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000064  Lock_time: 0.000025 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c4 like '%123';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000054  Lock_time: 0.000020 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE c5 like '%123';
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000045  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000125  Lock_time: 0.000091 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(pk) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000142  Lock_time: 0.000048 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c1) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000052  Lock_time: 0.000021 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c2) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000049  Lock_time: 0.000018 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c2) FROM t2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000045  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c3) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000045  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c3) FROM t2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000102  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c4) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000087  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c4) FROM t2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000047  Lock_time: 0.000018 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c5) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000045  Lock_time: 0.000015 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c5) FROM t2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000043  Lock_time: 0.000016 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(c6) FROM t1;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000053  Lock_time: 0.000021 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT pk FROM t1 ORDER BY pk LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000044  Lock_time: 0.000016 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT pk FROM t1 ORDER BY c1 LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000045  Lock_time: 0.000016 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT pk FROM t1 ORDER BY c2 LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000044  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT pk FROM t1 ORDER BY c3 LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000045  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT pk FROM t1 ORDER BY pk DESC LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000049  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT pk FROM t1 ORDER BY c2 DESC LIMIT 10 OFFSET 999990;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000057  Lock_time: 0.000018 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT c2, COUNT(*) FROM t1 GROUP BY c2;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000047  Lock_time: 0.000017 Rows_sent: 1  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT c3, COUNT(*) FROM t1 GROUP BY c3;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.032651  Lock_time: 0.000030 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.pk WHERE t1.pk = 5 ORDER BY t1.pk;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000220  Lock_time: 0.000080 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.c1 WHERE t1.pk = 5 ORDER BY t1.pk;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000566  Lock_time: 0.000031 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.pk WHERE t1.pk < 10 ORDER BY t1.pk;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000134  Lock_time: 0.000045 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.c1 WHERE t1.pk < 10 ORDER BY t1.pk;
+# User@Host: root[root] @ localhost []
+# Query_time: 0.001569  Lock_time: 0.000062 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE t1.pk IN (SELECT pk FROM t2 WHERE 33 < pk and pk < 77);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000304  Lock_time: 0.000088 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE t1.pk IN (SELECT c1 FROM t2 WHERE 33 < pk and pk < 77);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000129  Lock_time: 0.000035 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE t1.c1 IN (SELECT pk FROM t2 WHERE 33 < pk and pk < 77);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000086  Lock_time: 0.000028 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+EXPLAIN SELECT COUNT(*) FROM t1 WHERE t1.c1 IN (SELECT c1 FROM t2 WHERE 33 < pk and pk < 33);
+# User@Host: root[root] @ localhost []
+# Query_time: 0.000001  Lock_time: 0.000000 Rows_sent: 2  Rows_examined: 0
+SET timestamp=1358684743;
+# administrator command: Quit;
