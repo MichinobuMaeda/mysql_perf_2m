@@ -1,9 +1,10 @@
-MySQLの 100万行のテーブル 2個でいろいろ測ってみた
-===========
+# MySQLの 100万行のテーブル 2個でいろいろ測ってみた #
 
-# テーブルの定義 #
+## テーブルの定義 ##
 
-テーブル t1 は、列 c2 と c4 にインデックスを設定。
+### テーブル t1 ###
+
+列 c2 と c4 にインデックスを設定。
 
     CREATE TABLE t1 (
       pk INT 
@@ -18,7 +19,7 @@ MySQLの 100万行のテーブル 2個でいろいろ測ってみた
     , INDEX ( c4 )
     );
 
-DESC t1;
+`DESC t1;`
 
     +-------+---------------+------+-----+---------+-------+
     | Field | Type          | Null | Key | Default | Extra |
@@ -32,7 +33,7 @@ DESC t1;
     | c6    | varchar(2000) | YES  |     | NULL    |       |
     +-------+---------------+------+-----+---------+-------+
 
-SHOW INDEX FROM t1;
+`SHOW INDEX FROM t1;`
 
     +-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
     | Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
@@ -42,8 +43,11 @@ SHOW INDEX FROM t1;
     | t1    | 1          | c4       | 1            | c4          | A         | 2049        | NULL     | NULL   | YES  | BTREE      |         |               |
     +-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
 
+Cardinality はサンプリングによる推測値だと思われる。実際は 10 。
 
-テーブル t2 は、列 ( c2, c3 ) と ( c4, c5 ) にインデックスを設定。
+### テーブル t2 ###
+
+列 ( c2, c3 ) と ( c4, c5 ) にインデックスを設定。
 
     CREATE TABLE t2 (
       pk INT 
@@ -58,7 +62,7 @@ SHOW INDEX FROM t1;
     , INDEX ( c4, c5 )
     );
 
-DESC t2;
+`DESC t2;`
 
     +-------+---------------+------+-----+---------+-------+
     | Field | Type          | Null | Key | Default | Extra |
@@ -72,7 +76,7 @@ DESC t2;
     | c6    | varchar(2000) | YES  |     | NULL    |       |
     +-------+---------------+------+-----+---------+-------+
 
-SHOW INDEX FROM t2;
+`SHOW INDEX FROM t2;`
 
     +-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
     | Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
@@ -85,12 +89,12 @@ SHOW INDEX FROM t2;
     +-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
 
 
-# データ #
+## データ ##
 
 テーブル t1 と t2 に100万行の同じデータを投入。
 
-SELECT pk, c1, c2, c3, c4, c5, CONCAT(SUBSTR(c6, 1, 12), '... (',
-  FORMAT(CHAR_LENGTH(c6), 0), ')') "c6 (length)" FROM t1 WHERE pk < 15 ORDER BY pk;
+`SELECT pk, c1, c2, c3, c4, c5, CONCAT(SUBSTR(c6, 1, 12), '... (',
+  FORMAT(CHAR_LENGTH(c6), 0), ')') "c6 (length)" FROM t1 WHERE pk < 15 ORDER BY pk;`
 
     +----+------+------+------+------------+------------+-------------------------+
     | pk | c1   | c2   | c3   | c4         | c5         | c6 (length)             |
@@ -112,7 +116,7 @@ SELECT pk, c1, c2, c3, c4, c5, CONCAT(SUBSTR(c6, 1, 12), '... (',
     | 14 | 14   | 4    | 4    | 4567890123 | 4567890123 | 012345678901... (1,000) |
     +----+------+------+------+------------+------------+-------------------------+
 
-SELECT COUNT(*) FROM t1;
+`SELECT COUNT(*) FROM t1;`
 
     +----------+
     | COUNT(*) |
@@ -120,22 +124,26 @@ SELECT COUNT(*) FROM t1;
     | 1000000  |
     +----------+
 
-## 所要時間　##
+### データ作成の所要時間 ###
 
-t1
+MacBook Pro ( HDD ) で実施。 MySQL は Homebrew でインストール。
+
+INSERT は 1 msec./行くらい、 SELECT...INSERT... はその半分くらいの時間で処理している。
+
+`t1`
 
     579 sec.
     0.579 msec./行
     1727 行/sec.
 
-t2
+`t2`
 
     565 sec.
     0.565 msec./行
     1769 行/sec.
 
 
-# クエリの所要時間の実測値 ( sec. ) #
+## クエリの所要時間の実測値 ##
 
 2列目は Explain の Type
 
@@ -148,17 +156,19 @@ t2
 * A: ALL
 * N: Null
 
-詳細はこちら http://dev.mysql.com/doc/refman/5.1/ja/explain.html
+詳細はこちら: http://dev.mysql.com/doc/refman/5.1/ja/explain.html
 
      # TY     sec.         SQL
     -- -- ----------   ---------------
      1 C    0.169032 : SELECT c1 FROM t1 WHERE pk = 555;
      2 C    0.000232 : SELECT pk FROM t1 WHERE pk = 555;
      3 A   40.726989 : SELECT c1 FROM t1 WHERE c1 = 555;
+        <-- Type: All はどれも同じような時間になるはずだが、初回だけ特に遅い。
      4 R    2.822190 : SELECT COUNT(*) FROM t1 WHERE c2 = 5;
      5 R    1.175355 : SELECT COUNT(*) FROM t2 WHERE c2 = 5;
      6 R    0.099853 : SELECT COUNT(c2) FROM t1 WHERE c2 = 5;
      7 R   13.562057 : SELECT COUNT(c3) FROM t1 WHERE c2 = 5;
+        <-- インデックスを使ってかえって遅くなる現象。
      8 A    8.379612 : SELECT COUNT(*) FROM t1 WHERE c3 = 5;
      9 I    4.793032 : SELECT COUNT(*) FROM t2 WHERE c3 = 5;
     10 R    0.805067 : SELECT COUNT(*) FROM t1 WHERE c4 = '5678901234';
@@ -167,6 +177,7 @@ t2
     13 R   11.974615 : SELECT COUNT(c5) FROM t1 WHERE c4 = '5678901234';
     14 A    6.402512 : SELECT COUNT(*) FROM t1 WHERE c5 = '5678901234';
     15 I    7.369542 : SELECT COUNT(*) FROM t2 WHERE c5 = '5678901234';
+        <-- 複合インデックスの２列目以降だか、インデックス全走査はしている。
     16 G    0.085342 : SELECT COUNT(*) FROM t1 WHERE 333 < pk and pk < 777;
     17 A    5.792206 : SELECT COUNT(*) FROM t1 WHERE 333 < c1 and c1 < 777;
     18 G    5.027469 : SELECT COUNT(*) FROM t1 WHERE 3 < c2 and c2 < 7;
@@ -175,11 +186,13 @@ t2
     21 I    3.105512 : SELECT COUNT(*) FROM t2 WHERE 3 < c3 and c3 < 7;
     22 G    0.058277 : SELECT COUNT(*) FROM t1 WHERE pk IN (333, 555, 777);
     23 G    0.000275 : SELECT COUNT(*) FROM t1 WHERE pk = 333 OR pk = 555 OR pk = 777;
+        <-- IN と同様の内部処理をしているようだ。
     24 G    0.166990 : SELECT COUNT(*) FROM t1 WHERE c4 like '567%';
     25 G    0.148582 : SELECT COUNT(*) FROM t2 WHERE c4 like '567%';
     26 A    5.714941 : SELECT COUNT(*) FROM t1 WHERE c5 like '567%';
     27 I    6.240257 : SELECT COUNT(*) FROM t2 WHERE c5 like '567%';
     28 I    6.548055 : SELECT COUNT(*) FROM t1 WHERE c4 like '%890%';
+        <-- 先頭部分一致ではないが、インデックス全走査はしている。
     29 A    6.442854 : SELECT COUNT(*) FROM t1 WHERE c5 like '%890%';
     30 I    5.768264 : SELECT COUNT(*) FROM t1 WHERE c4 like '%123';
     31 A    6.303429 : SELECT COUNT(*) FROM t1 WHERE c5 like '%123';
@@ -187,6 +200,7 @@ t2
     33 I    0.390959 : SELECT COUNT(pk) FROM t1;
     34 A    6.116947 : SELECT COUNT(c1) FROM t1;
     35 I    0.431209 : SELECT COUNT(c2) FROM t1;
+        <-- インデックス全走査でも、数を数えるだけなら速いようだ。
     36 I    3.383081 : SELECT COUNT(c2) FROM t2;
     37 A    6.613420 : SELECT COUNT(c3) FROM t1;
     38 I    4.064485 : SELECT COUNT(c3) FROM t2;
@@ -196,14 +210,17 @@ t2
     42 I    1.067514 : SELECT COUNT(c5) FROM t2;
     43 A    6.054356 : SELECT COUNT(c6) FROM t1;
     44 I    7.068580 : SELECT pk FROM t1 ORDER BY pk LIMIT 10 OFFSET 999990;
+        <-- インデックスを使った ORDER BY だか、数が多すぎると時間がかかる。
     45 A    6.530155 : SELECT pk FROM t1 ORDER BY c1 LIMIT 10 OFFSET 999990;
     46 I    0.427420 : SELECT pk FROM t1 ORDER BY c2 LIMIT 10 OFFSET 999990;
+        <-- PKに比べて早いのは、カーディナリティが低いからだと思われる。
     47 A    6.588856 : SELECT pk FROM t1 ORDER BY c3 LIMIT 10 OFFSET 999990;
     48 I    7.701476 : SELECT pk FROM t1 ORDER BY pk DESC LIMIT 10 OFFSET 999990;
     49 I    0.700669 : SELECT pk FROM t1 ORDER BY c2 DESC LIMIT 10 OFFSET 999990;
     50 I    0.387229 : SELECT c2, COUNT(*) FROM t1 GROUP BY c2;
     51 A    5.928128 : SELECT c3, COUNT(*) FROM t1 GROUP BY c3;
     52 CC   0.127321 : SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.pk WHERE t1.pk = 5 ORDER BY t1.pk;
+        <-- 1, 2 と同様のPKによる一意検索を２回した、ということ。
     53 CA  28.139084 : SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.c1 WHERE t1.pk = 5 ORDER BY t1.pk;
     54 GE   0.116812 : SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.pk WHERE t1.pk < 10 ORDER BY t1.pk;
     55 GA  30.309197 : SELECT t1.pk FROM t1 JOIN t2 ON t1.c2 = t2.c1 WHERE t1.pk < 10 ORDER BY t1.pk;
